@@ -17,10 +17,12 @@ function App() {
   // the "5" button, or the operator if they click one of those buttons) and then call your setter function to update state.
   // Don't forget to pass the functions (and any additional data needed) to the components as props
   const [total, updateTotal] = useState(0);
+
   const concatItem = item =>
-    total === 0 && typeof item === "number"
+    total === 0 && parseInt(item) < 10
       ? updateTotal(item)
       : updateTotal(total + item);
+
   const clearDisplay = () => updateTotal(0);
   return (
     <div className="container">
@@ -30,7 +32,7 @@ function App() {
         {/* STEP 4 - Render your components here and be sure to properly import/export all files */}
         <Numbers concatItem={concatItem} />
         <Operators concatItem={concatItem} />
-        <Specials clearItem={clearDisplay} concatItem={concatItem} />
+        <Specials clearDisplay={clearDisplay} concatItem={concatItem} />
       </div>
     </div>
   );

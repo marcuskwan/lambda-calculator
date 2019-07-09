@@ -7,7 +7,7 @@ export const SpecialButton = props => {
       <button
         onClick={() =>
           props.special === "C"
-            ? props.clearDisplay
+            ? props.clearDisplay()
             : props.concatItem(props.special)
         }>
         {props.special}
