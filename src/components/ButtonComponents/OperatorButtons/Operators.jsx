@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { OperatorButton } from "./OperatorButton.jsx";
 //Import your array data to from the provided data file
 import { operators } from "../../../data";
-export const Operators = () => {
+export const Operators = props => {
   // STEP 2 - add the imported data to state
   const [operatorsData, setOperator] = useState(operators);
   return (
@@ -17,6 +17,7 @@ export const Operators = () => {
           key={operator.char}
           operator={operator}
           setOperator={setOperator}
+          concatItem={props.concatItem}
         />
       ))}
     </div>
