@@ -19,11 +19,12 @@ function App() {
   const [total, updateTotal] = useState(0);
 
   const concatItem = item =>
-    total === 0 && parseInt(item) < 10
+    total === 0 && Number(item) < 10
       ? updateTotal(item)
       : updateTotal(total + item);
 
   const clearDisplay = () => updateTotal(0);
+  const calculateTotal = display => updateTotal(display.split('').reduce((acc,cv)=> acc+cv))
   return (
     <div className="container">
       <Logo />
