@@ -24,7 +24,9 @@ function App() {
       : updateTotal(total + item);
 
   const clearDisplay = () => updateTotal(0);
-  const calculateTotal = display => updateTotal(display.split('').reduce((acc,cv)=> acc+cv))
+  const calculateTotal = () =>
+    // eslint-disable-next-line
+    updateTotal(eval(total))
   return (
     <div className="container">
       <Logo />
@@ -32,7 +34,7 @@ function App() {
       <div className="App">
         {/* STEP 4 - Render your components here and be sure to properly import/export all files */}
         <Numbers concatItem={concatItem} />
-        <Operators concatItem={concatItem} />
+        <Operators concatItem={concatItem} calculateTotal={calculateTotal} />
         <Specials clearDisplay={clearDisplay} concatItem={concatItem} />
       </div>
     </div>

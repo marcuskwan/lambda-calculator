@@ -18,6 +18,7 @@ export const Operators = props => {
           operator={operator}
           setOperator={setOperator}
           concatItem={props.concatItem}
+          calculateTotal={props.calculateTotal}
         />
       ))}
     </div>
