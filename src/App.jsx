@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 // STEP 4 - import the button and display components
 import Numbers from "./components/ButtonComponents/NumberButtons/Numbers.jsx";
@@ -16,17 +16,24 @@ function App() {
   // Your functions should accept a parameter of the the item data being displayed to the DOM (ie - should recieve 5 if the user clicks on
   // the "5" button, or the operator if they click one of those buttons) and then call your setter function to update state.
   // Don't forget to pass the functions (and any additional data needed) to the components as props
-  const [total, updateTotal] = useState(0);
+  const [total, updateTotal] = useState("0");
 
-  const concatItem = item =>
-    total === 0 && Number(item) < 10
+  const concatItem = item => {
+    console.log("item being clicked: ", item);
+    total === "0" && Number(item) < 10
       ? updateTotal(item)
       : updateTotal(total + item);
+  };
 
-  const clearDisplay = () => updateTotal(0);
+  useEffect(() => {
+    console.log("total: ", total);
+  }, [total]);
+
+  const clearDisplay = () => updateTotal("0");
   const calculateTotal = () =>
     // eslint-disable-next-line
-    updateTotal(eval(total))
+    updateTotal(eval(total));
+
   return (
     <div className="container">
       <Logo />
